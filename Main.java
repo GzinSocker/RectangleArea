@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
+import java.text.DecimalFormat;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ public class Main {
     public static void main(String[] args) {
         int x1,x2,x3,x4,y1,y2,y3,y4;
         double d1,d2,d3,d4,d5,p1,p2,area;
+        DecimalFormat df = new DecimalFormat("0.###");
 
         Derivada der = new Derivada();
 
@@ -36,6 +38,7 @@ public class Main {
         p1 = (d1+d2+d5)/2;p2 = (d3+d4+d5)/2;
         area = der.calculaArea(p1*(p1-d1)*(p1-d2)*(p1-d5));
         area += der.calculaArea(p2*(p2-d3)*(p2-d4)*(p2-d5));
+        area = Integer.parseInt(df.format(area));
         new Draw(x1,x2,x3,x4,y1,y2,y3,y4);
         JOptionPane.showMessageDialog(null, "Area: "+area, "Resultado", JOptionPane.INFORMATION_MESSAGE);
     }
